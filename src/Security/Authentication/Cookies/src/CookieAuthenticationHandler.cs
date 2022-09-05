@@ -20,7 +20,7 @@ public class CookieAuthenticationHandler : SignInAuthenticationHandler<CookieAut
     // This should be kept in sync with HttpConnectionDispatcher
     private const string HeaderValueNoCache = "no-cache";
     private const string HeaderValueNoCacheNoStore = "no-cache,no-store";
-    private const string HeaderValueEpocDate = "Thu, 01 Jan 1970 00:00:00 GMT";
+    private const string HeaderValueEpochDate = "Thu, 01 Jan 1970 00:00:00 GMT";
     private const string SessionIdClaim = "Microsoft.AspNetCore.Authentication.Cookies-SessionId";
 
     private bool _shouldRefresh;
@@ -409,7 +409,7 @@ public class CookieAuthenticationHandler : SignInAuthenticationHandler<CookieAut
     {
         Response.Headers.CacheControl = HeaderValueNoCacheNoStore;
         Response.Headers.Pragma = HeaderValueNoCache;
-        Response.Headers.Expires = HeaderValueEpocDate;
+        Response.Headers.Expires = HeaderValueEpochDate;
 
         if (shouldRedirect && Response.StatusCode == 200)
         {
